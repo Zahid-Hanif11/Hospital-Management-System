@@ -38,12 +38,18 @@ def selectChoice():
 
 def addPatient():
     arr = []
-    arr.append(input("Enter Patient Name: ")) 
-    arr.append(input("Enter Disease: ")) 
-    arr.append(input("Enter Emergency Status: ")) 
-    arr.append(input("Enter Doctor Name: ")) 
-    
-    patients.append(arr)
+    patient_name = input("Enter Patient Name: ")
+    for i in range(len(patients)):
+        if(patients[i][0] == patient_name):
+            print("Patient Already Exists.")
+            selectChoice()
+            return
+        else:
+            arr.append(patient_name)
+            arr.append(input("Enter Disease: ")) 
+            arr.append(input("Enter Emergency Status: ")) 
+            arr.append(input("Enter Doctor Name: ")) 
+            patients.append(arr)
     selectChoice()
 
 def viewAllPatients():
