@@ -77,26 +77,37 @@ def searchPatient():
 
 def searchByDisease():
     disease = input("Enter Disease: ")
-
+    count = 0
     for i in range(len(patients)):
         if(patients[i][1] == disease):
             print(i+1, "Patient Name:", patients[i][0], "\nDisease:", patients[i][1], "\nStatus:", patients[i][2], "\nDoctor:", patients[i][3])
+            count += 1
+    if count == 0:
+        print("No Patients Found with this Disease.")
 
     selectChoice()
 
 def showEmergencyPatients():
+    count = 0
     for i in range(len(patients)):
         if(patients[i][2] == "Emergency"):
             print("Patient Name:", patients[i][0], ", Disease:", patients[i][1], ", Status:", patients[i][2], ", Doctor:", patients[i][3])
+            count += 1
+    if count == 0:
+        print("No Emergency Patients Found.")
 
     selectChoice()
 
 def updateDoctor():
     Patient=input("Enter Patient Name:")
-    Doctor_name=input("Enter Doctor Name:")
+    count=0
     for i in range(len(patients)):
         if(patients[i][0]== Patient):
+            Doctor_name=input("Enter Doctor Name:")
             patients[i][3]=Doctor_name
+            count += 1
+    if count == 0:
+        print("No Patient Found with this Name.")
 
     selectChoice()
 
@@ -115,12 +126,16 @@ def Discharge():
 
 def Statistic():
     Patient=input("Enter Patient Name:")
+    count=0
     for i in range(len(patients)):
         if(patients[i][0]==Patient):
             print("Name:",patients[i][0])
             print("Disease:",patients[i][1])
             print("Status:",patients[i][2])
             print("Doctor Name:",patients[i][3])
+            count += 1
+    if count == 0:
+        print("No Patient Found with this Name.")
     selectChoice()
 
 def searchByDoctor():
